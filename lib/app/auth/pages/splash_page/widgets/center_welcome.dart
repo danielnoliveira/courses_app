@@ -59,7 +59,7 @@ class CenterWelcome extends StatelessWidget {
                 disable: false,
                 title: 'Get Started',
                 onPressed: () {
-                  Modular.to.popAndPushNamed('/auth/login');
+                  Modular.to.popAndPushNamed('/sign_up');
                 },
               ),
             ],
