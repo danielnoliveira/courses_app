@@ -66,21 +66,31 @@ class CourseCard extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
-            child: Flow(
-              delegate: ParallaxFlowDelegate(
-                scrollable: Scrollable.of(context),
-                backgroundImageKey: _backgroundImageKey,
-                listItemContext: context,
+            child: SizedBox(
+              width: cardWidth,
+              height: cardImageHeight,
+              child: Stack(
+                children: [
+                  Positioned.fill(
+                    child: Flow(
+                      delegate: ParallaxFlowDelegate(
+                        scrollable: Scrollable.of(context),
+                        backgroundImageKey: _backgroundImageKey,
+                        listItemContext: context,
+                      ),
+                      children: [
+                        Image.asset(
+                          getImage(),
+                          width: cardWidth,
+                          height: cardImageHeight,
+                          fit: BoxFit.cover,
+                          key: _backgroundImageKey,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-              children: [
-                Image.asset(
-                  getImage(),
-                  width: cardWidth,
-                  height: cardImageHeight,
-                  fit: BoxFit.cover,
-                  key: _backgroundImageKey,
-                ),
-              ],
             ),
           ),
           space8,
@@ -170,7 +180,9 @@ class ParallaxFlowDelegate extends FlowDelegate {
 
   @override
   BoxConstraints getConstraintsForChild(int i, BoxConstraints constraints) {
-    return BoxConstraints.tightFor(height: CourseCard.cardImageHeight);
+    return BoxConstraints.tightFor(
+      width: constraints.maxWidth,
+    );
   }
 
   @override
@@ -204,8 +216,7 @@ class ParallaxFlowDelegate extends FlowDelegate {
     // Paint the background.
     context.paintChild(
       0,
-      transform:
-          Transform.translate(offset: Offset(childRect.left, 0.0)).transform,
+      transform: Transform.translate(offset: Offset(0.0, 0.0)).transform,
     );
   }
 
