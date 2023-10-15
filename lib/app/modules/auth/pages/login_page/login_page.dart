@@ -1,4 +1,4 @@
-import 'package:courses_app/app/auth/pages/login_page/login_page_view_model.dart';
+import 'package:courses_app/app/modules/auth/pages/login_page/login_page_view_model.dart';
 import 'package:flutter/material.dart';
 
 import 'login_page_view.dart';

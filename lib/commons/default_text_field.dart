@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../utils/colors_guide.dart';
+import '../utils/colors_guide.dart';
 
 class DefaultTextField extends StatelessWidget {
   final TextEditingController controller;

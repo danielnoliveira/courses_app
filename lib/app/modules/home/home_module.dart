@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'home_store.dart';
 
@@ -11,6 +13,14 @@ class HomeModule extends Module {
 
   @override
   void routes(r) {
-    r.child(Modular.initialRoute, child: (_) => const HomePage());
+    r.child(Modular.initialRoute, child: (_) {
+      SystemChrome.setSystemUIOverlayStyle(
+        const SystemUiOverlayStyle(
+          statusBarColor: Colors.white,
+          statusBarIconBrightness: Brightness.dark,
+        ),
+      );
+      return const HomePage();
+    });
   }
 }

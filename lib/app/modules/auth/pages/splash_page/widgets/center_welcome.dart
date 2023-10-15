@@ -1,4 +1,4 @@
-import 'package:courses_app/app/commons/default_button.dart';
+import 'package:courses_app/commons/default_button.dart';
 import 'package:courses_app/resources/resources.dart';
 import 'package:courses_app/utils/colors_guide.dart';
 import 'package:flutter/material.dart';

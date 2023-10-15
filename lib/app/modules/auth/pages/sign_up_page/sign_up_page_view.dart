@@ -1,15 +1,15 @@
-import 'package:courses_app/app/auth/pages/sign_up_page/sign_up_page_view_model.dart';
-import 'package:courses_app/app/auth/pages/sign_up_page/widgets/obscures_text_button.dart';
-import 'package:courses_app/app/commons/default_checkbox.dart';
-import 'package:courses_app/app/commons/default_text_field.dart';
-import 'package:courses_app/app/commons/footer_texts.dart';
-import 'package:courses_app/app/commons/label_field.dart';
-import 'package:courses_app/app/commons/page_header.dart';
+import 'package:courses_app/app/modules/auth/pages/sign_up_page/sign_up_page_view_model.dart';
+import 'package:courses_app/app/modules/auth/pages/sign_up_page/widgets/obscures_text_button.dart';
+import 'package:courses_app/commons/default_checkbox.dart';
+import 'package:courses_app/commons/default_text_field.dart';
+import 'package:courses_app/commons/footer_texts.dart';
+import 'package:courses_app/commons/label_field.dart';
+import 'package:courses_app/commons/page_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../../commons/default_button.dart';
+import '../../../../../commons/default_button.dart';
 
 class SignupPageView extends SignupPageViewModel {
   @override

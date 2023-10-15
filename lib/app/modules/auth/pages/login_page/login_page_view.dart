@@ -1,14 +1,14 @@
-import 'package:courses_app/app/auth/pages/login_page/login_page_view_model.dart';
-import 'package:courses_app/app/commons/page_header.dart';
+import 'package:courses_app/app/modules/auth/pages/login_page/login_page_view_model.dart';
+import 'package:courses_app/commons/page_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../../commons/default_button.dart';
-import '../../../commons/default_checkbox.dart';
-import '../../../commons/default_text_field.dart';
-import '../../../commons/footer_texts.dart';
-import '../../../commons/label_field.dart';
+import '../../../../../commons/default_button.dart';
+import '../../../../../commons/default_checkbox.dart';
+import '../../../../../commons/default_text_field.dart';
+import '../../../../../commons/footer_texts.dart';
+import '../../../../../commons/label_field.dart';
 import '../sign_up_page/widgets/obscures_text_button.dart';
 
 class LoginPageView extends LoginPageViewModel {

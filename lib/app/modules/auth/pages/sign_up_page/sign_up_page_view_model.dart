@@ -1,4 +1,4 @@
-import 'package:courses_app/app/auth/pages/sign_up_page/sign_up_page.dart';
+import 'package:courses_app/app/modules/auth/pages/sign_up_page/sign_up_page.dart';
 import 'package:flutter/material.dart';
 
 abstract class SignupPageViewModel extends State<SignupPage> {

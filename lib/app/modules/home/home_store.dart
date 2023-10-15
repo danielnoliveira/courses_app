@@ -6,9 +6,9 @@ class HomeStore = HomeStoreBase with _$HomeStore;
 
 abstract class HomeStoreBase with Store {
   @observable
-  int counter = 0;
+  int index = 0;
 
-  Future<void> increment() async {
-    counter = counter + 1;
+  Future<void> setIndex(int newIndex) async {
+    index = newIndex;
   }
 }
