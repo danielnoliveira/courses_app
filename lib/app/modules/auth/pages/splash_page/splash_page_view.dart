@@ -7,6 +7,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../../../../commons/animations/fade_animation.dart';
+import '../../../../../commons/animations/translate_animation.dart';
+
 class SplashPageView extends SplashPageViewModel {
   @override
   Widget build(BuildContext context) {
@@ -25,11 +28,24 @@ class SplashPageView extends SplashPageViewModel {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Spacer(),
-            const CenterWelcome(),
+            const CustomFadeAnimation(
+              curve: Curves.easeInCubic,
+              child: CenterWelcome(),
+              duration: Duration(milliseconds: 1000),
+            ),
             const Spacer(),
-            SvgPicture.asset(
-              Svgs.kidStudying,
-              width: 100.w,
+            CustomTranslateAnimation(
+              duration: Duration(milliseconds: 750),
+              curve: Curves.easeInCubic,
+              offset: const Offset(0, 300),
+              child: CustomFadeAnimation(
+                duration: Duration(milliseconds: 750),
+                curve: Curves.easeInCubic,
+                child: SvgPicture.asset(
+                  Svgs.kidStudying,
+                  width: 100.w,
+                ),
+              ),
             ),
           ],
         ),

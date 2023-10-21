@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../../../../commons/animations/fade_animation.dart';
+import '../../../../../commons/animations/translate_animation.dart';
 import '../../../../../commons/default_button.dart';
 import '../../../../../commons/default_checkbox.dart';
 import '../../../../../commons/default_text_field.dart';
@@ -26,61 +28,99 @@ class LoginPageView extends LoginPageViewModel {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              const PageHeader(title: 'Log in'),
+              CustomTranslateAnimation(
+                offset: Offset(-50, 0),
+                child: CustomFadeAnimation(
+                  child: const PageHeader(
+                    title: 'Log in',
+                  ),
+                ),
+              ),
               const SizedBox(
                 height: 30,
               ),
-              const LabelField(label: 'Email or Phone number'),
-              DefaultTextField(
-                controller: emailTextController,
-                focusNode: emailFocus,
-                hintText: '',
+              CustomTranslateAnimation(
+                offset: Offset(0, 50),
+                child: CustomFadeAnimation(
+                  child: const LabelField(label: 'Email or Phone number'),
+                ),
               ),
-              const LabelField(label: 'Password'),
-              ValueListenableBuilder<bool>(
-                  valueListenable: isPasswordObscured,
-                  builder: (context, _, __) {
-                    return DefaultTextField(
-                      controller: passwordTextController,
-                      focusNode: passwordFocus,
-                      obscureText: _,
-                      hintText: '',
-                      sufixIcon: ObscuresTextButton(
-                        isTextObscured: _,
-                        onTap: () {
-                          isPasswordObscured.value = !_;
+              CustomTranslateAnimation(
+                offset: Offset(0, 50),
+                child: CustomFadeAnimation(
+                  child: DefaultTextField(
+                    controller: emailTextController,
+                    focusNode: emailFocus,
+                    hintText: '',
+                  ),
+                ),
+              ),
+              CustomTranslateAnimation(
+                offset: Offset(0, 50),
+                child: CustomFadeAnimation(
+                  child: const LabelField(label: 'Password'),
+                ),
+              ),
+              CustomTranslateAnimation(
+                offset: Offset(0, 50),
+                child: CustomFadeAnimation(
+                  child: ValueListenableBuilder<bool>(
+                      valueListenable: isPasswordObscured,
+                      builder: (context, _, __) {
+                        return DefaultTextField(
+                          controller: passwordTextController,
+                          focusNode: passwordFocus,
+                          obscureText: _,
+                          hintText: '',
+                          sufixIcon: ObscuresTextButton(
+                            isTextObscured: _,
+                            onTap: () {
+                              isPasswordObscured.value = !_;
+                            },
+                          ),
+                        );
+                      }),
+                ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              CustomTranslateAnimation(
+                offset: Offset(0, 50),
+                child: CustomFadeAnimation(
+                  child: Row(
+                    children: [
+                      DefaultButton(
+                        disable: false,
+                        title: 'Log In',
+                        onPressed: () {
+                          Modular.to.popAndPushNamed('/home/');
                         },
                       ),
-                    );
-                  }),
-              const SizedBox(
-                height: 30,
-              ),
-              Row(
-                children: [
-                  DefaultButton(
-                    disable: false,
-                    title: 'Log In',
-                    onPressed: () {
-                      Modular.to.popAndPushNamed('/home/');
-                    },
+                    ],
                   ),
-                ],
+                ),
               ),
               const SizedBox(
                 height: 30,
               ),
-              Center(
-                child: FooterText(texts: [
-                  TextChild(TextChildType.normal, 'Don\'t have an account?'),
-                  TextChild(
-                    TextChildType.bold,
-                    '  Sign up',
-                    onTap: () {
-                      Modular.to.popAndPushNamed('/sign_up');
-                    },
+              CustomTranslateAnimation(
+                offset: Offset(0, 50),
+                child: CustomFadeAnimation(
+                  child: Center(
+                    child: FooterText(texts: [
+                      TextChild(
+                          TextChildType.normal, 'Don\'t have an account?'),
+                      TextChild(
+                        TextChildType.bold,
+                        '  Sign up',
+                        onTap: () {
+                          Modular.to.popAndPushNamed('/sign_up');
+                        },
+                      ),
+                    ]),
                   ),
-                ]),
+                ),
               ),
               const SizedBox(
                 height: 40,

@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:courses_app/commons/animations/fade_animation.dart';
+import 'package:courses_app/commons/animations/scale_animation.dart';
 import 'package:courses_app/utils/colors_guide.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -57,111 +59,120 @@ class CourseCard extends StatelessWidget {
       height: 8,
     );
     int starts = getStarsQuantity();
-    return Container(
-      padding: const EdgeInsets.only(right: 16),
-      width: cardWidth,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: SizedBox(
-              width: cardWidth,
-              height: cardImageHeight,
-              child: Stack(
-                children: [
-                  Positioned.fill(
-                    child: Flow(
-                      delegate: ParallaxFlowDelegate(
-                        scrollable: Scrollable.of(context),
-                        backgroundImageKey: _backgroundImageKey,
-                        listItemContext: context,
-                      ),
-                      children: [
-                        Image.asset(
-                          getImage(),
-                          width: cardWidth,
-                          height: cardImageHeight,
-                          fit: BoxFit.cover,
-                          key: _backgroundImageKey,
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          space8,
-          Text(
-            'Junior Scholars Institute' * 2,
-            overflow: TextOverflow.ellipsis,
-            style: GoogleFonts.inter(
-              fontSize: 4.2.w,
-              fontWeight: FontWeight.w600,
-              height: 1,
-              color: Colors.black,
-            ),
-          ),
-          space8,
-          Text(
-            'Jos Brown',
-            overflow: TextOverflow.ellipsis,
-            style: GoogleFonts.inter(
-              fontSize: 3.8.w,
-              fontWeight: FontWeight.w400,
-              height: 1,
-              color: ColorsGuide.sadGray,
-            ),
-          ),
-          space8,
-          Row(
+    return CustomScaleAnimation(
+      keepAlive: false,
+      scaleStart: 0.6,
+      delayDuration: Duration(milliseconds: 250),
+      child: CustomFadeAnimation(
+        keepAlive: false,
+        delayDuration: Duration(milliseconds: 250),
+        child: Container(
+          padding: const EdgeInsets.only(right: 16),
+          width: cardWidth,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Text(getStarsQuantity().toString(),
-                  style: GoogleFonts.inter(
-                    fontSize: 4.2.w,
-                    fontWeight: FontWeight.w600,
-                    height: 1,
-                    color: ColorsGuide.yellowGolden,
-                  )),
-              ...List.generate(
-                5,
-                (index) {
-                  return Icon(
-                    Icons.star,
-                    color: index < starts
-                        ? ColorsGuide.yellowGolden
-                        : ColorsGuide.lightGray,
-                  );
-                },
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: SizedBox(
+                  width: cardWidth,
+                  height: cardImageHeight,
+                  child: Stack(
+                    children: [
+                      Positioned.fill(
+                        child: Flow(
+                          delegate: ParallaxFlowDelegate(
+                            scrollable: Scrollable.of(context),
+                            backgroundImageKey: _backgroundImageKey,
+                            listItemContext: context,
+                          ),
+                          children: [
+                            Image.asset(
+                              getImage(),
+                              width: cardWidth,
+                              height: cardImageHeight,
+                              fit: BoxFit.cover,
+                              key: _backgroundImageKey,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-              const SizedBox(
-                width: 8,
-              ),
+              space8,
               Text(
-                '(1,541)',
+                'Junior Scholars Institute' * 2,
+                overflow: TextOverflow.ellipsis,
+                style: GoogleFonts.inter(
+                  fontSize: 4.2.w,
+                  fontWeight: FontWeight.w600,
+                  height: 1,
+                  color: Colors.black,
+                ),
+              ),
+              space8,
+              Text(
+                'Jos Brown',
                 overflow: TextOverflow.ellipsis,
                 style: GoogleFonts.inter(
                   fontSize: 3.8.w,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.w400,
                   height: 1,
                   color: ColorsGuide.sadGray,
                 ),
               ),
+              space8,
+              Row(
+                children: [
+                  Text(getStarsQuantity().toString(),
+                      style: GoogleFonts.inter(
+                        fontSize: 4.2.w,
+                        fontWeight: FontWeight.w600,
+                        height: 1,
+                        color: ColorsGuide.yellowGolden,
+                      )),
+                  ...List.generate(
+                    5,
+                    (index) {
+                      return Icon(
+                        Icons.star,
+                        color: index < starts
+                            ? ColorsGuide.yellowGolden
+                            : ColorsGuide.lightGray,
+                      );
+                    },
+                  ),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  Text(
+                    '(1,541)',
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.inter(
+                      fontSize: 3.8.w,
+                      fontWeight: FontWeight.w500,
+                      height: 1,
+                      color: ColorsGuide.sadGray,
+                    ),
+                  ),
+                ],
+              ),
+              space8,
+              Text(
+                '\$24',
+                style: GoogleFonts.inter(
+                  fontSize: 4.2.w,
+                  fontWeight: FontWeight.w600,
+                  height: 1,
+                  color: Colors.black,
+                ),
+              ),
             ],
           ),
-          space8,
-          Text(
-            '\$24',
-            style: GoogleFonts.inter(
-              fontSize: 4.2.w,
-              fontWeight: FontWeight.w600,
-              height: 1,
-              color: Colors.black,
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }

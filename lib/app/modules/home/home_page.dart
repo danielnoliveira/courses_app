@@ -1,14 +1,14 @@
-import 'dart:math';
-
 import 'package:courses_app/app/modules/home/widgets/course_card.dart';
 import 'package:courses_app/app/modules/home/widgets/courses_list.dart';
 import 'package:courses_app/app/modules/home/widgets/courses_list_label.dart';
 import 'package:courses_app/app/modules/home/widgets/home_bottom_navigation_bar.dart';
 import 'package:courses_app/app/modules/home/widgets/top_pick_card.dart';
 import 'package:courses_app/commons/default_checkbox.dart';
-import 'package:courses_app/resources/resources.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+
+import '../../../commons/animations/fade_animation.dart';
+import '../../../commons/animations/translate_animation.dart';
 
 class HomePage extends StatefulWidget {
   final String title;
@@ -34,11 +34,16 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                CoursesListLabel(
-                  texts: [
-                    TextChild(TextChildType.normal, 'Recommended '),
-                    TextChild(TextChildType.bold, 'courses'),
-                  ],
+                CustomTranslateAnimation(
+                  offset: Offset(-75, 0),
+                  child: CustomFadeAnimation(
+                    child: CoursesListLabel(
+                      texts: [
+                        TextChild(TextChildType.normal, 'Recommended '),
+                        TextChild(TextChildType.bold, 'courses'),
+                      ],
+                    ),
+                  ),
                 ),
                 CoursesList(
                   itemCount: 5,
@@ -47,11 +52,16 @@ class _HomePageState extends State<HomePage> {
                     return CourseCard(index: value);
                   },
                 ),
-                CoursesListLabel(
-                  texts: [
-                    TextChild(TextChildType.normal, 'Top '),
-                    TextChild(TextChildType.bold, 'trending'),
-                  ],
+                CustomTranslateAnimation(
+                  offset: Offset(-75, 0),
+                  child: CustomFadeAnimation(
+                    child: CoursesListLabel(
+                      texts: [
+                        TextChild(TextChildType.normal, 'Top '),
+                        TextChild(TextChildType.bold, 'trending'),
+                      ],
+                    ),
+                  ),
                 ),
                 CoursesList(
                   itemCount: 5,
@@ -60,14 +70,24 @@ class _HomePageState extends State<HomePage> {
                     return CourseCard(index: value);
                   },
                 ),
-                CoursesListLabel(
-                  texts: [
-                    TextChild(TextChildType.normal, 'Our '),
-                    TextChild(TextChildType.bold, 'top picks '),
-                    TextChild(TextChildType.normal, 'for you'),
-                  ],
+                CustomTranslateAnimation(
+                  offset: Offset(-75, 0),
+                  child: CustomFadeAnimation(
+                    child: CoursesListLabel(
+                      texts: [
+                        TextChild(TextChildType.normal, 'Our '),
+                        TextChild(TextChildType.bold, 'top picks '),
+                        TextChild(TextChildType.normal, 'for you'),
+                      ],
+                    ),
+                  ),
                 ),
-                const TopRiskCard(index: 5),
+                CustomTranslateAnimation(
+                  offset: Offset(0, 100),
+                  child: CustomFadeAnimation(
+                    child: const TopRiskCard(index: 5),
+                  ),
+                ),
               ],
             ),
           ),
